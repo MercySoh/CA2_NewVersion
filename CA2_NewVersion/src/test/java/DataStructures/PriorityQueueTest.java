@@ -66,4 +66,82 @@ public class PriorityQueueTest {
         assertEquals(expResult, result);
     }
     
+    /**
+     * Test add one appointment in empty queue of add method.
+     */
+    @Test
+    public void testAdd_addInEmptyQue() {
+        Appointments appt = new Appointments("Kenny", "Ryan", "1992-03-29", "Chest pain", "2023-05-02", 2, "Winson Murphy");
+        PriorityQueue instance = new PriorityQueue();
+
+        boolean expResult = true;
+        boolean result = instance.add(appt);
+        assertEquals(expResult, result);
+
+        int expSize = 1;
+        int resultSize = instance.size();
+        assertEquals(expSize, resultSize);
+    }
+
+    /**
+     * Test add one appointment in populated queue of last of add method.
+     */
+    @Test
+    public void testAdd_addInPopulatedQueue_last() {
+        Appointments appt = new Appointments("Kenny", "Ryan", "1992-03-29", "Chest pain", "2023-05-02", 2, "Winson Murphy");
+        PriorityQueue instance = new PriorityQueue();
+
+        instance.add(new Appointments("Jolin", "Smith", "1998-10-10", "Light Fever", "2023-04-14", 4, "Jennifer White"));
+        instance.add(new Appointments("Ason", "Kelly", "1988-01-14", "Feel shortness of breath", "2023-04-29", 3, "Winson Murphy"));
+
+        boolean expResult = true;
+        boolean result = instance.add(appt);
+        assertEquals(expResult, result);
+
+        int expSize = 3;
+        int resultSize = instance.size();
+        assertEquals(expSize, resultSize);
+    }
+
+    /**
+     * Test add one appointment in populated queue of first of add method.
+     */
+    @Test
+    public void testAdd_addInPopulatedQueue_first() {
+        Appointments appt = new Appointments("Jolin", "Smith", "1998-10-10", "Light Fever", "2023-04-14", 4, "Jennifer White");
+        PriorityQueue instance = new PriorityQueue();
+
+        instance.add(new Appointments("Ason", "Kelly", "1988-01-14", "Feel shortness of breath", "2023-04-29", 3, "Winson Murphy"));
+        instance.add(new Appointments("Brian", "Carroll", "1994-05-21", "Lightheadedness", "2023-05-02", 1, "Jennifer White"));
+
+        boolean expResult = true;
+        boolean result = instance.add(appt);
+        assertEquals(expResult, result);
+
+        int expSize = 3;
+        int resultSize = instance.size();
+        assertEquals(expSize, resultSize);
+    }
+
+    /**
+     * Test add one appointment in populated queue of middle of add method.
+     */
+    @Test
+    public void testAdd_addInPopulatedQueue_middle() {
+        Appointments appt = new Appointments("Ason", "Kelly", "1988-01-14", "Feel shortness of breath", "2023-04-29", 3, "Winson Murphy");
+        PriorityQueue instance = new PriorityQueue();
+
+        instance.add(new Appointments("Jolin", "Smith", "1998-10-10", "Light Fever", "2023-04-14", 4, "Jennifer White"));
+        instance.add(new Appointments("Brian", "Carroll", "1994-05-21", "Lightheadedness", "2023-05-02", 1, "Jennifer White"));
+
+        boolean expResult = true;
+        boolean result = instance.add(appt);
+        assertEquals(expResult, result);
+
+        int expSize = 3;
+        int resultSize = instance.size();
+        assertEquals(expSize, resultSize);
+    }
+
+    
 }
