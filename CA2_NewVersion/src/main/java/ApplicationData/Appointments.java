@@ -28,7 +28,7 @@ public class Appointments implements Comparable<Appointments> {
     private int triageLevel;
     private String doctorFullName;
 
-   /**
+    /**
      * A no argument constructor of appointments
      */
     public Appointments() {
