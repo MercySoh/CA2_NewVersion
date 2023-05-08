@@ -5,6 +5,7 @@
 package DataStructures;
 
 import ApplicationData.Appointments;
+import java.util.NoSuchElementException;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -143,5 +144,124 @@ public class PriorityQueueTest {
         assertEquals(expSize, resultSize);
     }
 
+     /**
+     * Test empty queue of element method.
+     */
+    @Test
+    public void testElement_EmptyQueue() {
+
+        PriorityQueue instance = new PriorityQueue();
+
+        assertThrows(NoSuchElementException.class, () -> {
+            instance.element();
+        });
+    }
+
+    /**
+     * Test populated queue of element method.
+     */
+    @Test
+    public void testElement_PopulatedQueue() {
+
+        PriorityQueue instance = new PriorityQueue();
+
+        instance.add(new Appointments("Jolin", "Smith", "1998-10-10", "Light Fever", "2023-04-14", 4, "Jennifer White"));
+
+        Appointments expResult = new Appointments("Jolin", "Smith", "1998-10-10", "Light Fever", "2023-04-14", 4, "Jennifer White");
+        Appointments result = instance.element();
+        assertEquals(expResult, result);
+    }
+
+    /**
+     * Test empty queue of peek method.
+     */
+    @Test
+    public void testPeek_EmptyQueue() {
+
+        PriorityQueue instance = new PriorityQueue();
+
+        Appointments expResult = null;
+        Appointments result = instance.peek();
+        assertEquals(expResult, result);
+
+    }
+
+    /**
+     * Test populated queue of peek method.
+     */
+    @Test
+    public void testPeek_PopulatedQueue() {
+
+        PriorityQueue instance = new PriorityQueue();
+
+        instance.add(new Appointments("Jolin", "Smith", "1998-10-10", "Light Fever", "2023-04-14", 4, "Jennifer White"));
+
+        Appointments expResult = new Appointments("Jolin", "Smith", "1998-10-10", "Light Fever", "2023-04-14", 4, "Jennifer White");
+        Appointments result = instance.element();
+        assertEquals(expResult, result);
+    }
+
+    /**
+     * Test empty queue of remove method.
+     */
+    @Test
+    public void testRemove_EmptyQue() {
+        PriorityQueue instance = new PriorityQueue();
+
+        assertThrows(NoSuchElementException.class, () -> {
+            instance.remove();
+        });
+    }
+
+    /**
+     * Test populated queue of remove method.
+     */
+    @Test
+    public void testRemove_PopulatedQue() {
+        PriorityQueue instance = new PriorityQueue();
+
+        instance.add(new Appointments("Jolin", "Smith", "1998-10-10", "Light Fever", "2023-04-14", 4, "Jennifer White"));
+        instance.add(new Appointments("Brian", "Carroll", "1994-05-21", "Lightheadedness", "2023-05-02", 1, "Jennifer White"));
+
+        Appointments expResult = new Appointments("Jolin", "Smith", "1998-10-10", "Light Fever", "2023-04-14", 4, "Jennifer White");
+        Appointments result = instance.remove();
+        assertEquals(expResult, result);
+
+        int expSize = 1;
+        int resultSize = instance.size();
+        assertEquals(expSize, resultSize);
+
+    }
+
+    /**
+     * Test empty queue of poll method.
+     */
+    @Test
+    public void testPoll_EmptyQue() {
+        PriorityQueue instance = new PriorityQueue();
+
+        Appointments expResult = null;
+        Appointments result = instance.poll();
+        assertEquals(expResult, result);
+    }
+
+    /**
+     * Test populated queue of poll method.
+     */
+    @Test
+    public void testPoll_PopulatedQue() {
+     PriorityQueue instance = new PriorityQueue();
+
+        instance.add(new Appointments("Jolin", "Smith", "1998-10-10", "Light Fever", "2023-04-14", 4, "Jennifer White"));
+        instance.add(new Appointments("Brian", "Carroll", "1994-05-21", "Lightheadedness", "2023-05-02", 1, "Jennifer White"));
+
+        Appointments expResult = new Appointments("Jolin", "Smith", "1998-10-10", "Light Fever", "2023-04-14", 4, "Jennifer White");
+        Appointments result = instance.remove();
+        assertEquals(expResult, result);
+
+        int expSize = 1;
+        int resultSize = instance.size();
+        assertEquals(expSize, resultSize);
+    }
     
 }
